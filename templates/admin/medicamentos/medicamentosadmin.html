@@ -1,0 +1,32 @@
+{% extends "admin/base_admin.html" %}
+
+{% block body %}
+<h1>Gestión de Medicamentos</h1>
+<a href="{{ url_for('crear_medicamento') }}" class="btn btn-success mb-3">➕ Nuevo Medicamento</a>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for med in medicamentos %}
+        <tr>
+            <td>{{ med[0] }}</td>
+            <td>{{ med[1] }}</td>
+            <td>${{ "%.2f"|format(med[3]) }}</td>
+            <td>{{ med[5] }}</td>
+            <td>
+                <a href="{{ url_for('editar_medicamento', id=med[0]) }}" class="btn btn-sm btn-primary">✏️ Editar</a>
+                <a href="{{ url_for('eliminar_medicamento', id=med[0]) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Borrar este medicamento?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

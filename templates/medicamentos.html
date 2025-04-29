@@ -1,0 +1,320 @@
+{% extends './base.html' %}
+
+{% block title %}Medicamentos | BiofarmaColón{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/medicamentos.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/images.jpg') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicamentos | BiofarmaColón</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">BiofarmaColón</div>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}">INICIO</a></li>
+                    <li class="dropdown">
+                        <a href="{{ url_for('medicamentos') }}" class="active">MEDICAMENTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('analgesicos') }}">Analgésicos</a></li>
+                            <li><a href="{{ url_for('antibioticos') }}">Antibióticos</a></li>
+                            <li><a href="{{ url_for('psicotropicos') }}">Psicotrópicos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('eventos') }}">EVENTOS</a></li>
+                    <li><a href="{{ url_for('contacto') }}">CONTACTO</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li>
+                        <a href="{{ url_for('ver_carrito') }}" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            {% if 'carrito' in session and session['carrito'] %}
+                            <span class="cart-count">{{ session['carrito']|length }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="user-menu">
+                        <a href="#"><i class="fas fa-user-circle"></i> {{ current_user.username }}</a>
+                        <ul class="user-dropdown">
+                            <li><a href="#">Mi perfil</a></li>
+                            <li><a href="#">Mis pedidos</a></li>
+                            <li><a href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}">INICIAR SESIÓN</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Medicamentos -->
+    <section class="hero-medicamentos">
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">Nuestros Medicamentos</h1>
+            <p class="hero-text">Productos farmacéuticos de calidad para tu bienestar y salud.</p>
+        </div>
+    </section>
+
+    <!-- Medicamentos Section -->
+    <section class="medicamentos-section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Catálogo de Medicamentos</h2>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="medicamentos-grid">
+                <!-- Medicamento 1 -->
+                <div class="medicamento-card scroll-reveal">
+                    <div class="medicamento-image">
+                        <img src="{{ url_for('static', filename='img/medicina/acetaminofen.jpg') }}" alt="Acetaminofen">
+                        <div class="medicamento-price">$5.99</div>
+                    </div>
+                    <div class="medicamento-info">
+                        <h3>Acetaminofen</h3>
+                        <p>Analgésico, antipirético. Tratamiento sintomático de la fiebre y del dolor leve a moderado.</p>
+                        
+                        {% if current_user.is_authenticated %}
+                        <form method="POST" action="{{ url_for('agregar_al_carrito') }}" class="add-to-cart-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="producto_id" value="med1">
+                            <div class="quantity-selector">
+                                <label for="cantidad">Cantidad:</label>
+                                <input type="number" name="cantidad" value="1" min="1" max="10" class="form-control">
+                            </div>
+                            <button type="submit" class="btn-add-to-cart">
+                                <i class="fas fa-cart-plus"></i> Añadir al carrito
+                            </button>
+                        </form>
+                        {% else %}
+                        <a href="{{ url_for('login') }}" class="btn-login-to-buy">
+                            Inicia sesión para comprar
+                        </a>
+                        {% endif %}
+                        
+                        <a href="#" class="btn-more-info">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Medicamento 2 -->
+                <div class="medicamento-card scroll-reveal">
+                    <div class="medicamento-image">
+                        <img src="{{ url_for('static', filename='img/medicina/aciclovir.jpg') }}" alt="Aciclovir">
+                        <div class="medicamento-price">$12.50</div>
+                    </div>
+                    <div class="medicamento-info">
+                        <h3>Aciclovir</h3>
+                        <p>Tratamiento de lesiones causadas por el virus herpes simple.</p>
+                        
+                        {% if current_user.is_authenticated %}
+                        <form method="POST" action="{{ url_for('agregar_al_carrito') }}" class="add-to-cart-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="producto_id" value="med2">
+                            <div class="quantity-selector">
+                                <label for="cantidad">Cantidad:</label>
+                                <input type="number" name="cantidad" value="1" min="1" max="10" class="form-control">
+                            </div>
+                            <button type="submit" class="btn-add-to-cart">
+                                <i class="fas fa-cart-plus"></i> Añadir al carrito
+                            </button>
+                        </form>
+                        {% else %}
+                        <a href="{{ url_for('login') }}" class="btn-login-to-buy">
+                            Inicia sesión para comprar
+                        </a>
+                        {% endif %}
+                        
+                        <a href="#" class="btn-more-info">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Medicamento 3 -->
+                <div class="medicamento-card scroll-reveal">
+                    <div class="medicamento-image">
+                        <img src="{{ url_for('static', filename='img/medicina/bacitracina.png') }}" alt="Bacitracina">
+                        <div class="medicamento-price">$8.75</div>
+                    </div>
+                    <div class="medicamento-info">
+                        <h3>Bacitracina</h3>
+                        <p>Previene infecciones en lesiones menores de la piel como cortadas y quemaduras.</p>
+                        
+                        {% if current_user.is_authenticated %}
+                        <form method="POST" action="{{ url_for('agregar_al_carrito') }}" class="add-to-cart-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="producto_id" value="med3">
+                            <div class="quantity-selector">
+                                <label for="cantidad">Cantidad:</label>
+                                <input type="number" name="cantidad" value="1" min="1" max="10" class="form-control">
+                            </div>
+                            <button type="submit" class="btn-add-to-cart">
+                                <i class="fas fa-cart-plus"></i> Añadir al carrito
+                            </button>
+                        </form>
+                        {% else %}
+                        <a href="{{ url_for('login') }}" class="btn-login-to-buy">
+                            Inicia sesión para comprar
+                        </a>
+                        {% endif %}
+                        
+                        <a href="#" class="btn-more-info">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Medicamento 4 -->
+                <div class="medicamento-card scroll-reveal">
+                    <div class="medicamento-image">
+                        <img src="{{ url_for('static', filename='img/medicina/omeprazol.jpg') }}" alt="Omeprazol">
+                        <div class="medicamento-price">$9.99</div>
+                    </div>
+                    <div class="medicamento-info">
+                        <h3>Omeprazol</h3>
+                        <p>Para el tratamiento de la acidez estomacal y úlceras gástricas.</p>
+                        
+                        {% if current_user.is_authenticated %}
+                        <form method="POST" action="{{ url_for('agregar_al_carrito') }}" class="add-to-cart-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="producto_id" value="med4">
+                            <div class="quantity-selector">
+                                <label for="cantidad">Cantidad:</label>
+                                <input type="number" name="cantidad" value="1" min="1" max="10" class="form-control">
+                            </div>
+                            <button type="submit" class="btn-add-to-cart">
+                                <i class="fas fa-cart-plus"></i> Añadir al carrito
+                            </button>
+                        </form>
+                        {% else %}
+                        <a href="{{ url_for('login') }}" class="btn-login-to-buy">
+                            Inicia sesión para comprar
+                        </a>
+                        {% endif %}
+                        
+                        <a href="#" class="btn-more-info">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante para subir -->
+    <a href="#top" id="btnSubir" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content scroll-reveal">
+                <div class="footer-col">
+                    <h3>BiofarmaColón</h3>
+                    <p>Tu farmacia de confianza con servicio 24 horas y atención personalizada.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@biofarma.colon.c"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/biofarmacolonca/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('medicamentos') }}">Medicamentos</a></li>
+                        <li><a href="{{ url_for('eventos') }}">Eventos</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('ver_carrito') }}">Carrito de compras</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> San Juan de Colón, Táchira</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@biofarmacolon.com</p>
+                    <p><i class="fas fa-clock"></i> Abierto 24/7</p>
+                </div>
+            </div>
+            <div class="copyright scroll-reveal">
+                <p>© 2024 BiofarmaColón. Todos los derechos reservados.</p>
+                <p>Todo en Salud</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollReveal = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            scrollReveal.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Mostrar/ocultar botón de subir
+        window.addEventListener('scroll', function() {
+            const btnSubir = document.getElementById('btnSubir');
+            if (window.pageYOffset > 300) {
+                btnSubir.style.display = 'block';
+            } else {
+                btnSubir.style.display = 'none';
+            }
+        });
+
+        // Actualizar automáticamente el carrito al cambiar cantidad
+        document.querySelectorAll('input[name="cantidad"]').forEach(input => {
+            input.addEventListener('change', function() {
+                this.closest('form').submit();
+            });
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

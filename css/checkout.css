@@ -1,0 +1,55 @@
+/* Estilos para el checkout */
+.sticky-top {
+    z-index: 10;
+}
+
+/* Estilos para los métodos de pago */
+.form-check {
+    padding-left: 2.5em;
+    margin-bottom: 1rem;
+}
+
+.form-check-input {
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: 0.25em;
+}
+
+.form-check-label {
+    padding-top: 0.25em;
+    cursor: pointer;
+}
+
+/* Estilos para los inputs */
+.form-control, .form-select {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #5fd837;
+    box-shadow: 0 0 0 0.25rem rgba(95, 216, 55, 0.25);
+}
+
+/* Estilos para la lista de productos */
+.list-group-item {
+    padding: 1.25rem 1.5rem;
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sticky-top {
+        position: static;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .list-group-item {
+        padding: 0.75rem 1rem;
+    }
+}

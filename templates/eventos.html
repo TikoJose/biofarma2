@@ -1,0 +1,214 @@
+{% extends './base.html' %}
+
+{% block title %}Eventos | BiofarmaColón{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/eventos.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/images.jpg') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos | BiofarmaColón</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">BiofarmaColón</div>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}">INICIO</a></li>
+                    <li class="dropdown">
+                        <a href="{{ url_for('medicamentos') }}">MEDICAMENTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('analgesicos') }}">Analgésicos</a></li>
+                            <li><a href="{{ url_for('antibioticos') }}">Antibióticos</a></li>
+                            <li><a href="{{ url_for('psicotropicos') }}">Psicotrópicos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('eventos') }}" class="active">EVENTOS</a></li>
+                    <li><a href="{{ url_for('contacto') }}">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Eventos -->
+    <section class="hero-eventos">
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">Eventos y Promociones</h1>
+            <p class="hero-text">Participa en nuestras actividades especiales y obtén grandes beneficios</p>
+        </div>
+    </section>
+
+    <!-- Eventos Section -->
+    <section class="eventos-section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Próximos Eventos</h2>
+            
+            <div class="evento-card scroll-reveal">
+                <div class="evento-header">
+                    <h3>GRAN RIFA</h3>
+                    <div class="evento-badge">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>9 de Noviembre 2024</span>
+                    </div>
+                </div>
+                
+                <div class="evento-content">
+                    <p>Biofarma Colón y Sucursal Lobatera tendrán premios para este 9 de noviembre. ¡Corre y compra tus medicamentos!</p>
+                    <p>Solo por la compra de tus productos en cualquiera de las mencionadas farmacias ya estarás participando por muchos premios, incluyendo una espectacular moto <strong>Escuda</strong> cero kilómetros y más sorpresas.</p>
+                    
+                    <div class="evento-video">
+                        <video controls poster="{{ url_for('static', filename='img/evento-poster.jpg') }}">
+                            <source src="{{ url_for('static', filename='videos/Download.mp4') }}" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video.
+                        </video>
+                    </div>
+                    
+                    <div class="evento-reglas">
+                        <h4><i class="fas fa-clipboard-list"></i> Reglas para participar:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Realizar una compra igual o mayor a <strong>20.000 COP</strong></li>
+                            <li><i class="fas fa-check-circle"></i> Seguir la cuenta de Instagram <a href="https://www.instagram.com/biofarmacolonca/" target="_blank">@biofarmacolonca</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="evento-premios">
+                        <h4><i class="fas fa-gift"></i> Premios:</h4>
+                        <div class="premios-grid">
+                            <div class="premio-item">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Moto Escuda 0km</span>
+                            </div>
+                            <div class="premio-item">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span>Canastas de productos</span>
+                            </div>
+                            <div class="premio-item">
+                                <i class="fas fa-pills"></i>
+                                <span>Descuentos especiales</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evento-footer">
+                    <a href="#" class="btn-evento">
+                        <i class="fas fa-ticket-alt"></i> Participar ahora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Espacio para más eventos -->
+            <div class="mas-eventos scroll-reveal">
+                <h3>Más eventos próximamente</h3>
+                <p>Estamos preparando más actividades especiales para nuestros clientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container scroll-reveal">
+            <div class="newsletter-content">
+                <h2><i class="fas fa-envelope"></i> Suscríbete a nuestro boletín</h2>
+                <p>Recibe información sobre nuestros eventos y promociones directamente en tu correo</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante para subir -->
+    <a href="#top" id="btnSubir" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content scroll-reveal">
+                <div class="footer-col">
+                    <h3>BiofarmaColón</h3>
+                    <p>Tu farmacia de confianza con servicio 24 horas y atención personalizada.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@biofarma.colon.c"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/biofarmacolonca/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('medicamentos') }}">Medicamentos</a></li>
+                        <li><a href="{{ url_for('eventos') }}">Eventos</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> San Juan de Colón, Táchira</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@biofarmacolon.com</p>
+                    <p><i class="fas fa-clock"></i> Abierto 24/7</p>
+                </div>
+            </div>
+            <div class="copyright scroll-reveal">
+                <p>© 2024 BiofarmaColón. Todos los derechos reservados.</p>
+                <p>Todo en Salud</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollReveal = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            scrollReveal.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Mostrar/ocultar botón de subir
+        window.addEventListener('scroll', function() {
+            const btnSubir = document.getElementById('btnSubir');
+            if (window.pageYOffset > 300) {
+                btnSubir.style.display = 'block';
+            } else {
+                btnSubir.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

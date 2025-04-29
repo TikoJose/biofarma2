@@ -1,0 +1,238 @@
+{% extends './base.html' %}
+
+{% block title %}Contacto | BiofarmaColón{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contactos.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/images.jpg') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | BiofarmaColón</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">BiofarmaColón</div>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}">INICIO</a></li>
+                    <li class="dropdown">
+                        <a href="{{ url_for('medicamentos') }}">MEDICAMENTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('analgesicos') }}">Analgésicos</a></li>
+                            <li><a href="{{ url_for('antibioticos') }}">Antibióticos</a></li>
+                            <li><a href="{{ url_for('psicotropicos') }}">Psicotrópicos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('eventos') }}">EVENTOS</a></li>
+                    <li><a href="{{ url_for('contacto') }}" class="active">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Contacto -->
+    <section class="hero-contacto">
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">Contáctanos</h1>
+            <p class="hero-text">Estamos disponibles 24/7 para atender tus necesidades farmacéuticas</p>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="contacto-section">
+        <div class="container">
+            <div class="contacto-grid scroll-reveal">
+                <!-- Información de Contacto -->
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contacto-info">
+                        <h3>Ubicación</h3>
+                        <p>San Juan de Colón y Lobatera, Estado Táchira</p>
+                        <a href="https://www.google.com/maps/place/Biofarma+colon" target="_blank" class="btn-contacto">
+                            <i class="fas fa-map"></i> Ver en mapa
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contacto-info">
+                        <h3>Teléfono</h3>
+                        <p>+58 414-7231356</p>
+                        <a href="tel:+584147231356" class="btn-contacto">
+                            <i class="fas fa-phone"></i> Llamar ahora
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Horario -->
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contacto-info">
+                        <h3>Horario</h3>
+                        <p>Atención las 24 horas</p>
+                        <p>Servicio ininterrumpido</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="redes-sociales scroll-reveal">
+                <h2 class="section-subtitle">Síguenos en redes sociales</h2>
+                <div class="redes-grid">
+                    <a href="https://www.tiktok.com/@biofarma.colon.c" class="redes-card" target="_blank">
+                        <div class="redes-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://www.instagram.com/biofarmacolonca/" class="redes-card" target="_blank">
+                        <div class="redes-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="#" class="redes-card" target="_blank">
+                        <div class="redes-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <div class="formulario-contacto scroll-reveal">
+                <h2 class="section-subtitle">Escríbenos un mensaje</h2>
+                <form class="contacto-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Teléfono">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tu mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">
+                        <i class="fas fa-paper-plane"></i> Enviar mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="mapa-section scroll-reveal">
+        <div class="container">
+            <h2 class="section-subtitle">Nuestra ubicación</h2>
+            <div class="mapa-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31515.78040237448!2d-72.253034!3d8.0325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMDInMDAuMCJOIDcywrAxNScwNS4wIlc!5e0!3m2!1sen!2sve!4v1620000000000!5m2!1sen!2sve" 
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante para subir -->
+    <a href="#top" id="btnSubir" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content scroll-reveal">
+                <div class="footer-col">
+                    <h3>BiofarmaColón</h3>
+                    <p>Tu farmacia de confianza con servicio 24 horas y atención personalizada.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@biofarma.colon.c"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/biofarmacolonca/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('medicamentos') }}">Medicamentos</a></li>
+                        <li><a href="{{ url_for('eventos') }}">Eventos</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> San Juan de Colón, Táchira</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@biofarmacolon.com</p>
+                    <p><i class="fas fa-clock"></i> Abierto 24/7</p>
+                </div>
+            </div>
+            <div class="copyright scroll-reveal">
+                <p>© 2024 BiofarmaColón. Todos los derechos reservados.</p>
+                <p>Todo en Salud</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollReveal = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            scrollReveal.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Mostrar/ocultar botón de subir
+        window.addEventListener('scroll', function() {
+            const btnSubir = document.getElementById('btnSubir');
+            if (window.pageYOffset > 300) {
+                btnSubir.style.display = 'block';
+            } else {
+                btnSubir.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

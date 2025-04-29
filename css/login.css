@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --primary-100: #0d1b2a;
+    --primary-200: #1b263b;
+    --primary-300: #415a77;
+    --accent-100: #4cc9f0;
+    --accent-200: #4895ef;
+    --text-primary: #e0e1dd;
+    --text-secondary: #778da9;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --gradient: linear-gradient(135deg, var(--accent-200), var(--accent-100));
+}
+
+body {
+    background: var(--primary-100);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.header {
+    padding: 1.5rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-200);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: var(--gradient);
+    border-radius: 6px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+    background: var(--glass-bg);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 80px);
+    padding: 4rem 8%;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Left Side - Hero Section */
+.hero-section {
+    position: relative;
+    max-width: 720px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-heading {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.hero-heading span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 520px;
+}
+
+.cta-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    background: var(--gradient);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.cta-button:hover::after {
+    opacity: 1;
+}
+
+/* Right Side - Login Form */
+.auth-section {
+    position: relative;
+    max-width: 480px;
+    margin-left: auto;
+}
+
+.signin-card {
+    background: var(--primary-200);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--primary-300);
+}
+
+.signin-card h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1.2rem 1.2rem 1.2rem 3rem;
+    background: var(--primary-100);
+    border: 1px solid var(--primary-300);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-200);
+    box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+}
+
+.form-group i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--gradient);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(76, 201, 240, 0.3);
+}
+
+.alternate-action {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+}
+
+.alternate-action a {
+    color: var(--accent-200);
+    text-decoration: none;
+    font-weight: 500;
+}

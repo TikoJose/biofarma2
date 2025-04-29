@@ -1,0 +1,125 @@
+{% extends './base.html' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<!-- Font Awesome para íconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<header class="header">
+    <div class="logo">BioFarma Colón</div>
+    <nav class="nav-links">
+        <a href="#">Características</a>
+        <a href="#">Soluciones</a>
+        <a href="#">Recursos</a>
+        <a href="#">Precios</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-heading">Impulsa tu <span>crecimiento empresarial</span></h1>
+            <p class="hero-text">Descubre nuevas oportunidades con soluciones innovadoras basadas en inteligencia artificial.</p>
+            <div class="cta-container">
+                <button class="cta-button">Comenzar prueba gratuita</button>
+                <button class="cta-button" style="background: var(--primary-300);">Ver demostración</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-section">
+        <div class="signin-card">
+            <h2>Bienvenido de nuevo</h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <br />
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <form class="form-signin" action="{{ url_for('login') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <!-- Campo de Usuario -->
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Usuario" required>
+                </div>
+
+                <!-- Campo de Contraseña -->
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                </div>
+
+                <!-- Nuevo: Selector de Rol (Administrador/Cliente) -->
+                <div class="form-group">
+                    <i class="fas fa-user-tag"></i>
+                    <select class="form-control" name="role" required>
+                        <option value="" disabled selected>Selecciona tu tipo de usuario</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+
+                <!-- Eliminé el campo de email que estaba en tu versión original -->
+                <!-- ya que normalmente el login solo requiere usuario y contraseña -->
+
+                <button class="submit-btn" type="submit">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                </button>
+            </form>
+
+            <div class="alternate-action">
+                ¿No tienes cuenta? <a href="{{ url_for('register') }}">Regístrate aquí</a>
+            </div>
+
+            <!-- Nuevo: Credenciales de prueba para administrador -->
+            <div class="test-credentials mt-4">
+                <details>
+                    <summary class="text-small">Credenciales de prueba</summary>
+                    <div class="credentials-box">
+                        <p><strong>Administrador:</strong></p>
+                        <p>Usuario: <code>admin_biofarma</code></p>
+                        <p>Contraseña: <code>BioFarma2023</code></p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilos adicionales para los nuevos elementos */
+    .test-credentials {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .test-credentials details {
+        cursor: pointer;
+    }
+    .test-credentials summary {
+        font-weight: bold;
+    }
+    .credentials-box {
+        margin-top: 8px;
+        padding: 10px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+    }
+    .form-group select {
+        padding-left: 40px; /* Para alinear con los otros campos */
+        height: 45px; /* Misma altura que los inputs */
+    }
+</style>
+{% endblock %}

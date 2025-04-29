@@ -1,0 +1,416 @@
+{% extends './base.html' %}
+
+{% block title %}Analgésicos | BiofarmaColón{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analgesicos.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/images.jpg') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analgésicos | BiofarmaColón</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">BiofarmaColón</div>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}">INICIO</a></li>
+                    <li class="dropdown">
+                        <a href="{{ url_for('medicamentos') }}">MEDICAMENTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('analgesicos') }}" class="active">Analgésicos</a></li>
+                            <li><a href="{{ url_for('antibioticos') }}">Antibióticos</a></li>
+                            <li><a href="{{ url_for('psicotropicos') }}">Psicotrópicos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('eventos') }}">EVENTOS</a></li>
+                    <li><a href="{{ url_for('contacto') }}">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Analgésicos -->
+    <section class="hero-analgesicos">
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">Analgésicos</h1>
+            <p class="hero-text">Alivio efectivo para el dolor leve a moderado, con productos de calidad garantizada.</p>
+        </div>
+    </section>
+
+    <!-- Analgésicos Section -->
+    <!-- PRODUCTOS -->
+<div class="analgesicos-grid">
+    <!-- Acetaminofen -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/acetaminofen.jpg') }}" alt="Acetaminofen">
+        </div>
+        <div class="analgesico-info">
+            <h3>Acetaminofen</h3>
+            <p>Oral o rectal: fiebre; dolor de cualquier etiología de intensidad leve o moderado. dolor moderado y fiebre, a corto plazo, cuando existe necesidad urgente o no son posibles otras vías.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 500 mg</span>
+                <span><i class="fas fa-box"></i> 20 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Aflamax -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/165014-800-auto.webp') }}" alt="Aflamax">
+        </div>
+        <div class="analgesico-info">
+            <h3>Aflamax</h3>
+            <p>El diclofenac potásico inhibe la producción de sustancias que intervienen en la respuesta inflamatoria, en la regulación de la temperatura corporal, presión arterial, contracción del músculo liso y secreción del moco gástrico.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 50 mg</span>
+                <span><i class="fas fa-box"></i> 10 cápsulas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Brugesic -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/brugesic.jpg') }}" alt="Brugesic">
+        </div>
+        <div class="analgesico-info">
+            <h3>Brugesic</h3>
+            <p>Analgésico potente para aliviar el dolor crónico moderado a severo, dolor de larga duración que requiere el uso de un analgésico fuerte. No se debe usar para eliminar el dolor agudo.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 50 mg</span>
+                <span><i class="fas fa-box"></i> 10 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Brudol -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/brudol.jpg') }}" alt="Brudol">
+        </div>
+        <div class="analgesico-info">
+            <h3>Brudol</h3>
+            <p>Asociación de ibuprofeno, analgésico de rápida acción, seguro y efectivo, con cafeína un estimulador del SNC, actuando rápidamente, controlando y mejorando síntomas de cansancio y decaimiento.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 400 mg</span>
+                <span><i class="fas fa-box"></i> 12 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Colfene -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/Colfene.png') }}" alt="Colfene">
+        </div>
+        <div class="analgesico-info">
+            <h3>Colfene</h3>
+            <p>Tratamiento de la contractura de la musculatura estriada que cursa con dolor de intensidad leve a moderada. Cada comprimido contiene: ibuprofeno 400 mg, tiocolchicósido 4 mg.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 400 mg</span>
+                <span><i class="fas fa-box"></i> 10 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Celecoxib -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/celecoxi.jpg') }}" alt="Celecoxib">
+        </div>
+        <div class="analgesico-info">
+            <h3>Celecoxib</h3>
+            <p>Medicamento antiinflamatorio no esteroideo (AINE) indicado para el alivio del dolor en pacientes con osteoartritis, dismenorrea y artritis reumatoide, y artritis reumatoide juvenil.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 200 mg</span>
+                <span><i class="fas fa-box"></i> 10 cápsulas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Diclofenac -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/Antibioticos/doxiciclina.png') }}" alt="Diclofenac">
+        </div>
+        <div class="analgesico-info">
+            <h3>Diclofenac</h3>
+            <p>Tratamiento de las afecciones que cursan con inflamación y/o dolor de intensidad leve a moderada. Tratamiento sintomático del dolor, dismenorrea primaria, migraña con o sin aura y fiebre.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 50 mg</span>
+                <span><i class="fas fa-box"></i> 20 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Diklasson -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/diklasson.jpg') }}" alt="Diklasson">
+        </div>
+        <div class="analgesico-info">
+            <h3>Diklasson</h3>
+            <p>Medicamento en forma de gel que se usa para tratar los síntomas de la artritis reumatoide. Bloquea sustancias que causan inflamación y dolor.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-tube"></i> Gel</span>
+                <span><i class="fas fa-weight"></i> 30 g</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Etoricoxib -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/etoricoxib.png') }}" alt="Etoricoxib">
+        </div>
+        <div class="analgesico-info">
+            <h3>Etoricoxib</h3>
+            <p>Ayuda a reducir el dolor y la hinchazón (inflamación) en las articulaciones y músculos de personas de 16 años de edad y mayores con artrosis, artritis reumatoide, espondilitis anquilosante y gota.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 60 mg</span>
+                <span><i class="fas fa-box"></i> 10 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Nimesulida+Paracetamol -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/nimesulida.webp') }}" alt="Nimesulida+Paracetamol">
+        </div>
+        <div class="analgesico-info">
+            <h3>Nimesulida+Paracetamol</h3>
+            <p>Combinación de nimesulide (anti-inflamatorio) y paracetamol (analgésico) para el tratamiento del dolor con componente inflamatorio.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 100+500 mg</span>
+                <span><i class="fas fa-box"></i> 12 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Tachipirin -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/Tachipirin.webp') }}" alt="Tachipirin">
+        </div>
+        <div class="analgesico-info">
+            <h3>Tachipirin</h3>
+            <p>Fiebre; dolor de cualquier etiología de intensidad leve o moderado. Analgésico y antipirético de acción rápida y efectiva.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 500 mg</span>
+                <span><i class="fas fa-box"></i> 20 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Ibutan -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/Ibutan.webp') }}" alt="Ibutan">
+        </div>
+        <div class="analgesico-info">
+            <h3>Ibutan</h3>
+            <p>Ibuprofeno en presentaciones de 400, 600 y 800mg para el tratamiento del dolor leve a moderado, inflamación y fiebre.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 400/600/800 mg</span>
+                <span><i class="fas fa-box"></i> 10 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Ibutancol -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/Ibutancol.webp') }}" alt="Ibutancol">
+        </div>
+        <div class="analgesico-info">
+            <h3>Ibutancol</h3>
+            <p>Alteraciones musculoesqueléticas y traumáticas con dolor e inflamación. Tratamiento sintomático del dolor muscular leve a moderado y contracturas musculares dolorosas.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 400 mg</span>
+                <span><i class="fas fa-box"></i> 12 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+
+    <!-- Ibutanfem -->
+    <div class="analgesico-card scroll-reveal">
+        <div class="analgesico-image">
+            <img src="{{ url_for('static', filename='img/analgesicos/ibutanfem.webp') }}" alt="Ibutanfem">
+        </div>
+        <div class="analgesico-info">
+            <h3>Ibutanfem</h3>
+            <p>Alivio de los espasmos dolorosos (cólicos o retortijones) del aparato digestivo, vías biliares y aparato genitourinario, incluidos los dolores menstruales.</p>
+            <div class="analgesico-details">
+                <span><i class="fas fa-capsules"></i> 400 mg</span>
+                <span><i class="fas fa-box"></i> 10 tabletas</span>
+            </div>
+            <a href="#" class="btn-analgesico">
+                <i class="fas fa-info-circle"></i> Más información
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Botón flotante para subir -->
+<a href="#top" id="btnSubir" class="scroll-top-btn">
+    <i class="fas fa-arrow-up"></i>
+</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container scroll-reveal">
+            <h2 class="section-title">¿Qué son los analgésicos?</h2>
+            <div class="info-content">
+                <p>Los analgésicos son medicamentos diseñados para aliviar el dolor sin afectar la conciencia. En BiofarmaColón ofrecemos una variedad de opciones para tratar diferentes tipos de dolor, desde leves hasta moderados, siempre con la mejor calidad y seguridad.</p>
+                <div class="info-tips">
+                    <h3><i class="fas fa-lightbulb"></i> Recomendaciones:</h3>
+                    <ul>
+                        <li>Consulte a su médico antes de usar cualquier analgésico</li>
+                        <li>No exceda la dosis recomendada</li>
+                        <li>Lea siempre las instrucciones del empaque</li>
+                        <li>Mantenga los medicamentos fuera del alcance de los niños</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante para subir -->
+    <a href="#top" id="btnSubir" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content scroll-reveal">
+                <div class="footer-col">
+                    <h3>BiofarmaColón</h3>
+                    <p>Tu farmacia de confianza con servicio 24 horas y atención personalizada.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@biofarma.colon.c"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/biofarmacolonca/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('medicamentos') }}">Medicamentos</a></li>
+                        <li><a href="{{ url_for('eventos') }}">Eventos</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> San Juan de Colón, Táchira</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@biofarmacolon.com</p>
+                    <p><i class="fas fa-clock"></i> Abierto 24/7</p>
+                </div>
+            </div>
+            <div class="copyright scroll-reveal">
+                <p>© 2024 BiofarmaColón. Todos los derechos reservados.</p>
+                <p>Todo en Salud</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollReveal = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            scrollReveal.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Mostrar/ocultar botón de subir
+        window.addEventListener('scroll', function() {
+            const btnSubir = document.getElementById('btnSubir');
+            if (window.pageYOffset > 300) {
+                btnSubir.style.display = 'block';
+            } else {
+                btnSubir.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

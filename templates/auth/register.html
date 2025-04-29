@@ -1,0 +1,68 @@
+{% extends './base.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+<header class="header">
+    <div class="logo">NovaFlow</div>
+    <nav class="nav-links">
+        <a href="#">Features</a>
+        <a href="#">Solutions</a>
+        <a href="#">Resources</a>
+        <a href="#">Pricing</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-heading">Join Our <span>Community</span></h1>
+            <p class="hero-text">Be part of a growing network that transforms ideas into reality.</p>
+            <div class="cta-container">
+                <button class="cta-button">Learn More</button>
+                <button class="cta-button" style="background: var(--primary-300);">Discover Benefits</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-section">
+        <div class="signin-card">
+            <h2>Create an Account</h2>
+
+            <form action="{{ url_for('register') }}" method="POST">
+                <!-- Token CSRF para seguridad -->
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-email"></i>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+
+
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+
+            <div class="alternate-action">
+                ¿Ya tienes una cuenta? <a href="{{ url_for('login') }}">Inicia sesión aquí</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

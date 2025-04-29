@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+
+{% block title %}Agregar Usuario{% endblock %}
+
+{% block body %}
+<h1>Agregar Nuevo Usuario</h1>
+
+<form action="{{ url_for('add_user') }}" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label for="fullname">Nombre Completo:</label>
+    <input type="text" id="fullname" name="fullname" required>
+
+    <label for="username">Usuario:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit" class="btn btn-success">Registrar Usuario</button>
+</form>
+
+<a href="{{ url_for('users') }}" class="btn btn-secondary">Volver a la Lista</a>
+{% endblock %}

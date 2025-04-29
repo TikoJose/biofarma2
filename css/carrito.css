@@ -1,0 +1,62 @@
+/* Estilos para el carrito */
+.cart-empty-icon {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.cart-empty-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Estilos para las imágenes de productos en el carrito */
+.img-thumbnail {
+    background-color: #11365b;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.img-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Estilos para los botones de acción */
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Estilos para la tabla */
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa !important;
+}
+
+/* Efecto hover para las filas de la tabla */
+.table tbody tr:hover {
+    background-color: rgba(95, 216, 55, 0.05);
+}
+
+/* Estilos para el resumen del pedido */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .img-thumbnail {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .table td, .table th {
+        padding: 0.75rem 0.5rem;
+    }
+}

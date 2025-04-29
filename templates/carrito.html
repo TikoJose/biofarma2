@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block title %}Carrito de Compras{% endblock %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/carrito.css') }}">
+
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="mb-4">
+                <i class="fas fa-shopping-cart"></i> Tu Carrito de Compras
+            </h2>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% if not carrito %}
+            <div class="text-center py-5">
+                <div class="cart-empty-icon mb-4">
+                    <i class="fas fa-cart-arrow-down fa-5x text-muted"></i>
+                </div>
+                <h3 class="text-muted mb-4">Tu carrito está vacío</h3>
+                <p class="text-muted mb-4">Explora nuestros productos y añade algunos artículos a tu carrito</p>
+                <a href="{{ url_for('medicamentos') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                </a>
+            </div>
+            {% else %}
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('actualizar_carrito') }}">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Precio Unitario</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in carrito.values() %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ url_for('static', filename='img/products/' + item.imagen) }}" 
+                                                alt="{{ item.nombre }}" 
+                                                class="img-thumbnail me-3" 
+                                                style="width: 80px; height: 80px; object-fit: contain;">
+                                            <div>
+                                                <h6 class="mb-1">{{ item.nombre }}</h6>
+                                                <small class="text-muted">Código: {{ item.id }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>${{ "%.2f"|format(item.precio) }}</td>
+                                    <td>
+                                        <input type="number" 
+                                            name="cantidad_{{ item.id }}" 
+                                            value="{{ item.cantidad }}" 
+                                            min="1" 
+                                            class="form-control" 
+                                            style="width: 80px;">
+                                    </td>
+                                    <td>${{ "%.2f"|format(item.precio * item.cantidad) }}</td>
+                                    <td>
+                                        <a href="{{ url_for('eliminar_del_carrito', producto_id=item.id) }}" 
+                                        class="btn btn-outline-danger btn-sm"
+                                        data-bs-toggle="tooltip" 
+                                        title="Eliminar producto">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{{ url_for('vaciar_carrito') }}" class="btn btn-outline-danger">
+                                <i class="fas fa-trash-alt"></i> Vaciar Carrito
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-sync-alt"></i> Actualizar Carrito
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        {% if carrito %}
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Resumen del Pedido</h5>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal:</span>
+                        <span>${{ "%.2f"|format(total) }}</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Envío:</span>
+                        <span class="text-success">Gratis</span>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between mb-4">
+                        <strong>Total:</strong>
+                        <strong>${{ "%.2f"|format(total) }}</strong>
+                    </div>
+                    
+                    <a href="{{ url_for('checkout') }}" class="btn btn-success w-100 py-2">
+                        <i class="fas fa-credit-card"></i> Proceder al Pago
+                    </a>
+                    
+                    <div class="mt-3 text-center">
+                        <small class="text-muted">O continúa comprando</small>
+                        <a href="{{ url_for('medicamentos') }}" class="d-block mt-2">
+                            <i class="fas fa-arrow-left"></i> Volver a la tienda
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title mb-3">
+                        <i class="fas fa-shield-alt text-success"></i> Compra Segura
+                    </h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success"></i> Pago seguro con encriptación SSL
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success"></i> Garantía de satisfacción
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success"></i> Entrega rápida
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Activar tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+    
+    // Actualizar automáticamente al cambiar cantidad
+    document.querySelectorAll('input[name^="cantidad_"]').forEach(input => {
+        input.addEventListener('change', function() {
+            this.closest('form').submit();
+        });
+    });
+});
+</script>
+{% endblock %}

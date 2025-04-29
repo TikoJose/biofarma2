@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+
+{% block title %}Editar Usuario{% endblock %}
+
+{% block body %}
+<h1>Editar Usuario</h1>
+
+<form action="{{ url_for('edit_user', id=user[0]) }}" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label for="fullname">Nombre Completo:</label>
+    <input type="text" id="fullname" name="fullname" value="{{ user[1] }}" required>
+
+    <label for="username">Usuario:</label>
+    <input type="text" id="username" name="username" value="{{ user[2] }}" required>
+
+    <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+</form>
+
+<a href="{{ url_for('users') }}" class="btn btn-secondary">Volver a la Lista</a>
+{% endblock %}

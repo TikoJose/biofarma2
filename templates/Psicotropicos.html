@@ -1,0 +1,216 @@
+{% extends './base.html' %}
+
+{% block title %}Psicotrópicos | BiofarmaColón{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/psicotropicos.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/images.jpg') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicotrópicos | BiofarmaColón</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">BiofarmaColón</div>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}">INICIO</a></li>
+                    <li class="dropdown">
+                        <a href="{{ url_for('medicamentos') }}">MEDICAMENTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('analgesicos') }}">Analgésicos</a></li>
+                            <li><a href="{{ url_for('antibioticos') }}">Antibióticos</a></li>
+                            <li><a href="{{ url_for('psicotropicos') }}" class="active">Psicotrópicos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('eventos') }}">EVENTOS</a></li>
+                    <li><a href="{{ url_for('contacto') }}">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Psicotrópicos -->
+    <section class="hero-psicotropicos">
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">Psicotrópicos</h1>
+            <p class="hero-text">Medicamentos especializados para el tratamiento de trastornos psicológicos y neurológicos.</p>
+        </div>
+    </section>
+
+    <!-- Psicotrópicos Section -->
+    <section class="psicotropicos-section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Nuestros Psicotrópicos</h2>
+            <div class="psicotropicos-grid">
+                <!-- Acetaminofen+Tramadol -->
+                <div class="psicotropico-card scroll-reveal">
+                    <div class="psicotropico-image">
+                        <img src="{{ url_for('static', filename='img/psicotropicos/Tramadol_acetaminofen.webp') }}" alt="Acetaminofen+Tramadol">
+                    </div>
+                    <div class="psicotropico-info">
+                        <h3>Acetaminofen+Tramadol</h3>
+                        <p>Combinación de analgésicos para el tratamiento del dolor moderado a intenso.</p>
+                        <div class="psicotropico-details">
+                            <span><i class="fas fa-capsules"></i> 325+37.5 mg</span>
+                            <span><i class="fas fa-box"></i> 10 tabletas</span>
+                        </div>
+                        <a href="#" class="btn-psicotropico">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Alpram -->
+                <div class="psicotropico-card scroll-reveal">
+                    <div class="psicotropico-image">
+                        <img src="{{ url_for('static', filename='img/psicotropicos/Alpram.webp') }}" alt="Alpram">
+                    </div>
+                    <div class="psicotropico-info">
+                        <h3>Alpram</h3>
+                        <p>Medicamento utilizado para tratar la ansiedad y los ataques de pánico.</p>
+                        <div class="psicotropico-details">
+                            <span><i class="fas fa-capsules"></i> 0.5 mg</span>
+                            <span><i class="fas fa-box"></i> 30 tabletas</span>
+                        </div>
+                        <a href="#" class="btn-psicotropico">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Clonzep -->
+                <div class="psicotropico-card scroll-reveal">
+                    <div class="psicotropico-image">
+                        <img src="{{ url_for('static', filename='img/psicotropicos/Clonzep.webp') }}" alt="Clonzep">
+                    </div>
+                    <div class="psicotropico-info">
+                        <h3>Clonzep</h3>
+                        <p>Indicado para el control de convulsiones y ataques de pánico.</p>
+                        <div class="psicotropico-details">
+                            <span><i class="fas fa-capsules"></i> 2 mg</span>
+                            <span><i class="fas fa-box"></i> 30 tabletas</span>
+                        </div>
+                        <a href="#" class="btn-psicotropico">
+                            <i class="fas fa-info-circle"></i> Más información
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Puedes añadir más psicotrópicos aquí siguiendo el mismo formato -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container scroll-reveal">
+            <h2 class="section-title">¿Qué son los psicotrópicos?</h2>
+            <div class="info-content">
+                <p>Los psicotrópicos son medicamentos que actúan sobre el sistema nervioso central, produciendo cambios en la percepción, el estado de ánimo, la conciencia y el comportamiento. En BiofarmaColón ofrecemos opciones controladas y seguras para el tratamiento de diversos trastornos psicológicos.</p>
+                <div class="info-tips">
+                    <h3><i class="fas fa-lightbulb"></i> Recomendaciones:</h3>
+                    <ul>
+                        <li>Úselo únicamente bajo prescripción médica</li>
+                        <li>No comparta estos medicamentos con otras personas</li>
+                        <li>Siga exactamente las dosis indicadas</li>
+                        <li>No mezcle con alcohol u otras sustancias</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante para subir -->
+    <a href="#top" id="btnSubir" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content scroll-reveal">
+                <div class="footer-col">
+                    <h3>BiofarmaColón</h3>
+                    <p>Tu farmacia de confianza con servicio 24 horas y atención personalizada.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@biofarma.colon.c"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/biofarmacolonca/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('medicamentos') }}">Medicamentos</a></li>
+                        <li><a href="{{ url_for('eventos') }}">Eventos</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> San Juan de Colón, Táchira</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@biofarmacolon.com</p>
+                    <p><i class="fas fa-clock"></i> Abierto 24/7</p>
+                </div>
+            </div>
+            <div class="copyright scroll-reveal">
+                <p>© 2024 BiofarmaColón. Todos los derechos reservados.</p>
+                <p>Todo en Salud</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollReveal = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            scrollReveal.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Mostrar/ocultar botón de subir
+        window.addEventListener('scroll', function() {
+            const btnSubir = document.getElementById('btnSubir');
+            if (window.pageYOffset > 300) {
+                btnSubir.style.display = 'block';
+            } else {
+                btnSubir.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}

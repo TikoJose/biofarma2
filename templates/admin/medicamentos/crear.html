@@ -1,0 +1,49 @@
+{% extends "admin/base_admin.html" %}
+
+{% block body %}
+<h1>Crear Nuevo Medicamento</h1>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Nombre*</label>
+        <input type="text" name="nombre" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Descripción*</label>
+        <textarea name="descripcion" class="form-control" rows="3" required></textarea>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Precio* ($)</label>
+            <input type="number" step="0.01" min="0.01" name="precio" class="form-control" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Categoría*</label>
+            <select name="categoria" class="form-control" required>
+                <option value="medicamentos">Medicamento General</option>
+                <option value="analgesicos">Analgésico</option>
+                <option value="antibioticos">Antibiótico</option>
+                <option value="psicotropicos">Psicotrópico</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Stock*</label>
+            <input type="number" min="0" name="stock" class="form-control" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Fecha de Caducidad*</label>
+            <input type="date" name="fecha_caducidad" class="form-control" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Imagen</label>
+            <div class="custom-file">
+                <input type="file" name="imagen" class="custom-file-input" accept="image/*">
+                <label class="custom-file-label">Elegir archivo...</label>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{{ url_for('admin_medicamentos') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
